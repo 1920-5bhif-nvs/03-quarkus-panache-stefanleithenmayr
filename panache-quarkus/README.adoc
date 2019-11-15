@@ -1,1 +1,25 @@
 # Quarkus Projekt mit Panache von Stefan Leithenmayr (5BHIF)
+
+* Aufgabenstellung 1: Erstellen Sie einen DB-Zugriff mit Panache
+
+Dazu müssen folgende Dependencies in die pom.xml - Datei eingetragen werden, je nach Datenbank muss ein unterschiedlicher Datenbank Driver hinzugefügt werden.
+```
+<dependencies>
+    <!-- Hibernate ORM specific dependencies -->
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-hibernate-orm-panache</artifactId>
+    </dependency>
+
+    <!-- JDBC driver dependencies -->
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-jdbc-postgresql</artifactId>
+    </dependency>
+</dependencies>
+```
+
+Weiteres müssen die Entitäten definiert werden. Dazu habe ich die Entitäten aus meinem
+Miniprojekt wiederverwendet. Der Vorteil dabei ist, dass man von der PanacheEntity ableiten kann und
+somit automatisch eine Id bekommt. Weiteres sind die Getter/Setter Methoden redundant. Es müssen lediglich die Fields, public gemacht werden.
+(https://quarkus.io/guides/hibernate-orm-panache)
