@@ -1,6 +1,6 @@
 package at.htl.business;
 
-import at.htl.models.*;
+import at.htl.model.*;
 import io.quarkus.runtime.StartupEvent;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Observes;

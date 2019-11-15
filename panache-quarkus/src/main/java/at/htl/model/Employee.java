@@ -1,4 +1,4 @@
-package at.htl.panachemodels;
+package at.htl.model;
 
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;

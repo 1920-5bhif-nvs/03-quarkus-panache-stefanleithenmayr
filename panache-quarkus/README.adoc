@@ -1,6 +1,6 @@
-# Quarkus Projekt mit Panache von Stefan Leithenmayr (5BHIF)
+# Quarkus Projekt (Übung 3) von Stefan Leithenmayr (5BHIF)
 
-* Aufgabenstellung 1: Erstellen Sie einen DB-Zugriff mit Panache
+* **Aufgabenstellung 1:** Erstellen Sie einen DB-Zugriff mit Panache
 
 Dazu müssen folgende Dependencies in die pom.xml - Datei eingetragen werden, je nach Datenbank muss ein unterschiedlicher Datenbank Driver hinzugefügt werden.
 ```
@@ -19,7 +19,61 @@ Dazu müssen folgende Dependencies in die pom.xml - Datei eingetragen werden, je
 </dependencies>
 ```
 
+Postgres Datenbank starten (mit Hilfe von Docker):
+```
+docker run --name cardealer-postgres -p 5432:5432 -e POSTGRES_PASSWORD=passme -d postgres
+```
+
+Wichtig für die Persistierung ist noch das Konfigurationsfile (resources/application.properties):
+```
+# configure your datasource
+quarkus.datasource.url = jdbc:postgresql://localhost:5432/postgres
+quarkus.datasource.driver = org.postgresql.Driver
+quarkus.datasource.username = admin
+quarkus.datasource.password = passme
+
+# drop and create the database at startup (use `update` to only update the schema)
+quarkus.hibernate-orm.database.generation = drop-and-create
+```
+
 Weiteres müssen die Entitäten definiert werden. Dazu habe ich die Entitäten aus meinem
 Miniprojekt wiederverwendet. Der Vorteil dabei ist, dass man von der PanacheEntity ableiten kann und
 somit automatisch eine Id bekommt. Weiteres sind die Getter/Setter Methoden redundant. Es müssen lediglich die Fields, public gemacht werden.
 (https://quarkus.io/guides/hibernate-orm-panache)
+
+Beispiel für eine PanacheEntität:
+```
+@Entity
+public class Model extends PanacheEntity {
+public String brand;
+public String model;
+public Model() {
+}
+
+    public Model(String brand, String model) {
+        this.brand = brand;
+        this.model = model;
+    }
+}
+```
+
+Es werden folgende Entitäten mit Panache persistiert:
+
+* Customer
+* Employee
+* Model
+* Person
+* Trade
+
+:bl: pass:[ +]
+:bl: pass:[ +]
+* **Aufgabenstellung 2:** Für die Persistierung mit Hibernate
+muss folgendes Dependency hinzugefügt werden:
+```
+<dependency>
+    <groupId>io.quarkus</groupId>
+    <artifactId>quarkus-hibernate-orm</artifactId>
+</dependency>
+```
+In der application.properties Datei müssen keine Änderungen gemacht werden,
+da auf die selbe Datenbank zugegriffen wird.

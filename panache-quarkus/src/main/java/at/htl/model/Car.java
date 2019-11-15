@@ -1,4 +1,4 @@
-package at.htl.models;
+package at.htl.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
