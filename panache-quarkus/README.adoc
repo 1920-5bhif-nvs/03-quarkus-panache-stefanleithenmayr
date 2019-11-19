@@ -24,12 +24,15 @@ Postgres Datenbank starten (mit Hilfe von Docker):
 docker run --name cardealer-postgres -p 5432:5432 -e POSTGRES_PASSWORD=passme -d postgres
 ```
 
+Quarkus - Applikation starten:
+
+
 Wichtig für die Persistierung ist noch das Konfigurationsfile (resources/application.properties):
 ```
 # configure your datasource
 quarkus.datasource.url = jdbc:postgresql://localhost:5432/postgres
 quarkus.datasource.driver = org.postgresql.Driver
-quarkus.datasource.username = admin
+quarkus.datasource.username = postgres
 quarkus.datasource.password = passme
 
 # drop and create the database at startup (use `update` to only update the schema)

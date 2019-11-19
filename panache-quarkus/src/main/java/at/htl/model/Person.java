@@ -34,10 +34,7 @@ public class Person extends PanacheEntity {
     }
 
     public List<Car> getCars() {
-        if (cars == null){
-            cars = new ArrayList<>();
-        }
-        return cars;
+        return this.cars;
     }
 
     public void setCars(List<Car> cars) {

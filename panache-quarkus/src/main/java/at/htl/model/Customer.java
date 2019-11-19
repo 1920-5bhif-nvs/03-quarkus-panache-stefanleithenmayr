@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Entity
 public class Customer extends Person {
 
-    private LocalDate customerSince;
+    public LocalDate customerSince;
 
     public Customer(String firstName, String lastName, LocalDate birth, String phoneNumber, String address, String email, LocalDate customerSince) {
         super(firstName, lastName, birth, phoneNumber, address, email);
@@ -16,13 +16,5 @@ public class Customer extends Person {
     }
 
     public Customer() {
-    }
-
-    public LocalDate getCustomerSince() {
-        return customerSince;
-    }
-
-    public void setCustomerSince(LocalDate customerSince) {
-        this.customerSince = customerSince;
     }
 }
